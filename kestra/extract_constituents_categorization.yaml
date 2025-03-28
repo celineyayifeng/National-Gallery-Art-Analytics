@@ -1,0 +1,52 @@
+id: extract_constituents_categorization
+namespace: national-gallery-art-analytics
+description: |
+  The CSV Data used: https://github.com/NationalGalleryOfArt/opendata/tree/82c1a501a7036a22c443bdd35c28d0569476eb6d/data 
+
+inputs:
+  - id: identifier 
+    type: SELECT
+    displayName: Select the identifier
+    values: [constituents]
+    defaults: constituents
+
+  - id: categorization 
+    type: SELECT
+    displayName: Select the categorization
+    values: [_altnames, _text_entries]
+    defaults: _altnames
+
+
+variables:
+  file: "{{inputs.identifier}}{{inputs.categorization}}.csv"
+  gcs_file: "gs://{{kv('GCP_BUCKET_NAME')}}/{{vars.file}}"
+  table: "{{kv('GCP_DATASET')}}.{{inputs.identifier}}{{inputs.categorization}}"
+  data: "{{outputs.extract.outputFiles[inputs.identifier ~ '' ~ inputs.categorization ~ '' ~ '.csv']}}"
+
+tasks:
+- id: set_label
+  type: io.kestra.plugin.core.execution.Labels
+  labels:
+    file: "{{render(vars.file)}}"
+    categorization: "{{inputs.identifier}}{{inputs.categorization}}"
+
+- id: extract
+  type: io.kestra.plugin.scripts.shell.Commands
+  outputFiles:
+    - "*.csv"
+  taskRunner:
+    type: io.kestra.plugin.core.runner.Process
+  commands:
+    - wget https://raw.githubusercontent.com/NationalGalleryOfArt/opendata/82c1a501a7036a22c443bdd35c28d0569476eb6d/data/{{render(vars.file)}}
+- id: upload_to_gcs
+  type: io.kestra.plugin.gcp.gcs.Upload
+  from: "{{render(vars.data)}}"
+  to: "{{render(vars.gcs_file)}}"
+
+pluginDefaults:
+  - type: io.kestra.plugin.gcp
+    values:
+      serviceAccount: "{{kv('GCP_CREDS')}}"
+      projectId: "{{kv('GCP_PROJECT_ID')}}"
+      location: "{{kv('GCP_LOCATION')}}"
+      bucket: "{{kv('GCP_BUCKET_NAME')}}"
