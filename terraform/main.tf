@@ -18,7 +18,7 @@ resource "google_compute_instance" "national-arts-analytics-vm" {
   zone         = var.region
 
   service_account {
-    email  = "${var.airflow_service_account_id}@${local.envs["GCP_PROJECT_ID"]}.iam.gserviceaccount.com"
+    email  = "file(var.terraform_service_account_id)@$file(var.project).iam.gserviceaccount.com"
     scopes = [
       "userinfo-email",
       "compute-ro",
@@ -41,15 +41,6 @@ resource "google_compute_instance" "national-arts-analytics-vm" {
       // Ephemeral public IP
     }
   }
-
-  metadata = {
-    GCP_PROJECT_ID = local.envs["GCP_PROJECT_ID"]
-    AIRFLOW_UID = 501
-    _PIP_ADDITIONAL_REQUIREMENTS = ""
-  }
   
-  metadata_startup_script = templatefile("./start_up_script.sh", {
-    GCS_BUCKET_SUFFIX            = var.gcs_bucket_class
-    AIRFLOW_SERVICE_ACCOUNT_ID   = var.airflow_service_account_id
-  })
+
 }

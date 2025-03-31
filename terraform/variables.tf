@@ -18,6 +18,11 @@ variable "location" {
   default     = "US"
 }
 
+variable "terraform_service_account_id" {
+  description = "Service Account ID for terraform"
+  default     = "arts-terraform"
+}
+
 variable "vm_instance" {
   description = "Name of VM Instance"
   default     = "national-arts-analytics-vm"
