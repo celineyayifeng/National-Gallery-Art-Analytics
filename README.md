@@ -8,7 +8,7 @@ The goal of this project is to build an end-to-end batch data pipeline to perfor
 
 ### Problem statement
 
-This is an exploratory exercise to understand more about the artworks curated by the National Gallery of Art. The National Gallery of Art Open Data Program publishes the dataset regarding the artworks and their attributes in the collection.The dataset is published in multiple CSV files and uses UTF-8 encoding. The collection management is in constant motion and therefore the dataset released through this open data program may not be entirely complete, correct, or up to date. This dataset is provided “as is”, is updated frequently (usually once a day), and should be used at your own risk.
+This is an exploratory exercise to understand more about the artworks curated by the National Gallery of Art. The [National Gallery of Art Open Data Program](https://github.com/NationalGalleryOfArt/opendata) publishes the dataset regarding the artworks and their attributes in the collection.The dataset is published in multiple CSV files and uses UTF-8 encoding. The collection management is in constant motion and therefore the dataset released through this open data program may not be entirely complete, correct, or up to date. This dataset is provided “as is”, is updated frequently (usually once a day), and should be used at your own risk.
 
 ### Objective
 
