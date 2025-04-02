@@ -19,10 +19,15 @@ Data will be extracted from the source, and an end-to-end data pipeline will be 
 ### Technologies 
 
 Cloud: GCP
+
 Infrastructure as code (IaC): Terraform
+
 Workflow orchestration: Kestra
+
 Data Warehouse: BigQuery
+
 Data Transformation: dbt-cloud
+
 Dashboard: Looker Studio
 
 ### Architecture 
