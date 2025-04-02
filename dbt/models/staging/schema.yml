@@ -1,0 +1,154 @@
+version: 2
+
+sources:
+  - name: staging
+    database: de-zoomcamp-446715
+    schema: art_analytics_bigquery
+
+    tables:
+      - name: constituents
+      - name: objects
+      - name: objects_constituents
+      - name: objects_dimensions
+      - name: locations
+      - name: objects_text_entries
+
+models:
+  - name: stg_constituents
+    description: >
+      Trip made by green taxis, also known as boro taxis and street-hail liveries.
+      Green taxis may respond to street hails,but only in the areas indicated in green on the
+      map (i.e. above W 110 St/E 96th St in Manhattan and in the boroughs).
+      The records were collected and provided to the NYC Taxi and Limousine Commission (TLC) by
+      technology service providers.
+    columns:
+      - name: constituentid
+        description: primary key (tms identifier)
+      - name: preferreddisplayname
+        description: inverted full name of the constituent - this is the NGA's preferred name for the constituent
+      - name: forwarddisplayname
+        description: forward direction preferred full name of the constituent
+      - name: lastname
+        description: preferred last name of the constituent
+      - name: displaydate
+        description: birth and death dates in human readable form
+      - name: artistofngaobject
+        description: 0 = not an artist associated with an NGA accessioned object 1 = artist of an NGA accessioned object
+      - name: beginyear
+        description: birth year
+      - name: endyear
+        description: death year
+      - name: nationality
+        description: nationality of the artist - not all values are conforming
+      - name: constituenttype
+        description: anonymous corporate couple individual purchase_fund
+
+  - name: stg_objects
+    description: >
+      Art objects are a core entity of the collection extract.  Objects are physical or logical constructs and all but a very small number of them in this extract are NGA objects with accession numbers.
+    columns:
+      - name: objectID
+        description: he primary identifier for an art object - identifier is created by the NGA's collection management system (tms); primary key for the table
+      - name: locationID
+        description: location identifier corresponding to the current location of the primary component of the art object
+      - name: title
+        description: title of the art object
+      - name: displayDate
+        description: human readable date corresponding to the creation timeframe of the object
+      - name: beginYear
+        description: computer readable year corresponding to the creation start year of the object
+      - name: endYear
+        description: computer readable year corresponding to the creation finish year of the object
+      - name: medium
+        description: materials comprising the art object
+      - name: dimensions
+        description: human readable dimensions of the art object
+      - name: inscription
+        description: text description of writings by the artist appearing on the art object and where they appear
+      - name: markings
+        description: text description of other visual marks appearing on the art object and where they appear
+      - name: classification
+        description: type of art object
+      - name: subclassification
+        description: sub-type of art object
+      - name: portfolio
+        description: portfolio associated with this art object for art objects associated with portfolios
+      - name: series
+        description: series associated with this art object for art objects associated with series
+      - name: volume
+        description: volume associated with this art object for art objects associated with volumes
+      - name: lastDetectedModification
+        description: datetime stamp of the last detected modification of this object in the source system
+
+  - name: stg_objects_constituents
+    description: >
+      One of the most important elements of the extract, the object / constituent relationships describe the association between a constituent and an object.    columns:
+    columns:
+      - name: objectID
+        description: foreign key to the objects table
+      - name: constituentID
+        description: foreign key to the constituents table
+      - name: displayOrder
+        description: order in which to display the list of constituent relationships for a given object
+      - name: roleType
+        description: currently includes "artist", "donor", and "owner" role types
+      - name: role
+        description: for each role type, there are specific roles, e.g. for artist, one of the roles is "painter"
+      - name: prefix
+        description: text prefix associated with the relationship / transaction
+      - name: suffix
+        description: text suffix associated with the relationship / transaction
+      - name: displayDate
+        description: human readable date(s) associated with the relationship / transaction
+      - name: beginYear
+        description: four digit year when the relationship / transaction started
+      - name: endYear
+        description: four digit year when the relationship / transaction ended
+      - name: country
+        description: the full country name where the relationship / transaction occurred
+      - name: zipCode
+        description: the postal code where the relationship / transaction occurred
+
+  - name: stg_objects_dimensions
+    description: >
+      records various dimensions for objects
+    columns:
+      - name: objectID
+        description: foreign key to the objects table
+      - name: element
+        description: a qualifier for the object element to which the dimension applies
+      - name: dimensionType
+        description: the type of measurement, e.g. width, height, diameter
+      - name: dimension
+        description: the numerical measurement itself, e.g. 21.22
+      - name: unitName
+        description: the units of the measurement, e.g. centimeters, grams, pounds, etc.
+
+  - name: stg_locations
+    description: >
+      The location represents the physical public location of an art object within the confines of the National Gallery of Art’s Washington, D.C. campus
+    columns:
+      - name: locationID
+        description: foreign key to locations table
+      - name: site
+        description: currently either "East Building" or "West Building”, the two primary sites of the NGA
+      - name: room
+        description: the room within the site, e.g. G-132
+      - name: description
+        description: full text description of the location,
+      - name: unitPosition
+        description: location within the room, e.g. SOUTH LEDGE
+
+  - name: objects_text_entries
+    description: >
+      stores long texts associated with objects
+    columns:
+      - name: objectID
+        description: foreign key to objects table
+      - name: text
+        description: the text itself which may or may not contain one of several embedded formatting adornments
+      - name: textType
+        description: >
+          currently one of: bibliography brief_narrative conservation_note documentary_labels_inscriptions exhibition_history exhibition_history_footnote inscription_footnote lifetime_exhibition other_collections systematic_catalogue
+      - name: year
+        description: the year the text was published
