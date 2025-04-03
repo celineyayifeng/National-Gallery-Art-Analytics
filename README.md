@@ -32,7 +32,7 @@ Dashboard: Looker Studio
 
 ### Architecture 
 
-<img width="732" alt="image" src="https://github.com/user-attachments/assets/275ef8a5-9de7-4136-acb0-0e671195ce2c" />
+<img width="722" alt="image" src="https://github.com/user-attachments/assets/abed3fe6-6c28-4807-ac37-0506ff52be62" />
 
 
 ### ELT Process 
@@ -149,7 +149,7 @@ Looker Studio: https://lookerstudio.google.com/reporting/a97044e0-e790-4711-b2da
 
 ### References 
 
-Great shoutout goes to the [National Gallery of Art Open Data Program](https://github.com/NationalGalleryOfArt/opendata) for the open data source. 
+Big shoutout goes to the [National Gallery of Art Open Data Program](https://github.com/NationalGalleryOfArt/opendata) for the open data source. 
 
 
 
