@@ -82,7 +82,7 @@ models:
 
   - name: stg_objects_constituents
     description: >
-      One of the most important elements of the extract, the object / constituent relationships describe the association between a constituent and an object.    columns:
+      One of the most important elements of the extract, the object / constituent relationships describe the association between a constituent and an object.
     columns:
       - name: objectID
         description: foreign key to the objects table

@@ -15,7 +15,7 @@ renamed as (
         forwarddisplayname,
         lastname,
         displaydate,
-        artistofngaobject,
+        {{ get_artist_desc("artistofngaobject") }} as artistofanobjectdesc,
         beginyear,
         endyear,
         visualbrowsertimespan,

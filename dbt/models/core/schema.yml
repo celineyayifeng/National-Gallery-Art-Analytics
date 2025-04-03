@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: fact_objects_constituents
+    description: >
+      Join objects and constituents data
+  - name: fact_role_analysis
+    description: >
+      analysis on roletype of objects
