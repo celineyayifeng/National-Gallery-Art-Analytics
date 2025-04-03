@@ -40,15 +40,15 @@ Clone this repo to your local machine with one of the following commands:
 
 With HTTPS:
 
-`
+```
 git clone https://github.com/celineyayifeng/National-Gallery-Art-Analytics.git
-`
+```
 
 With ssh:
 
-`
+```
 git clone git@github.com:celineyayifeng/National-Gallery-Art-Analytics.git
-`
+```
 
 If not done already, generate a corresponding ssh credentials file and store it as json file named my-creds.json in the cloned repo under /keys/: <repo-directory>/keys/my-creds.json
 
@@ -64,17 +64,17 @@ GCP_ACCOUNT_ID=<your_account_id>
 #### Terraform 
 
 Initialize Terraform with the following command:
-`
+```
 terraform init
-`
+```
 Preview the changes with the following command:
-`
+```
 terraform plan
-`
+```
 Kick-start your project (execute the proposed plan) with the following command:
-`
+```
 terraform apply
-`
+```
 
 Inspect the VM instance created.
 
@@ -82,24 +82,30 @@ Inspect the VM instance created.
 
 cd into kestra directory in terminal:
 
-`
+```
 cd ../kestra/
-`
+```
 
 The docker image is already created. Initialize docker container to run kestra on port 8080:
 
-`docker-compose up`
+```
+docker-compose up
+```
 
 Once it's completed running,
 
-`curl http://locahost:8080/`
+```
+curl http://locahost:8080/
+```
 
 Kestra UI should show up in default browser.
 
 Make sure namespace is in national-gallery-art-analytics. Go to KV Store.
 
 `key: GCP_CREDS`
+
 `Type: JSON`
+
 `Value: ` This should be the secret value of your GCP credentials.
 
 Once above is completed. Execute the following workflows in this order:
@@ -122,7 +128,9 @@ Use the files in the bigquery_ext_tables to create the external tables.
 
 Set up DBT. Connect to Bigquery. Once cloud IDE starts up, run
 
-`dbt build`
+```
+dbt build
+```
 
 This will build all the staging and fact tables in Bigquery. 
 
