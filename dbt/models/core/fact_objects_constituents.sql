@@ -4,6 +4,16 @@
     )
 }}
 
+with obj_constituents as (
+    select objectid,
+           countif(roletype = 'donor') as donor_count,
+           countif(roletype = 'owner') as owner_count,
+           countif(roletype = 'artist') as artist_count, 
+           count(*) as total_count
+    from {{ ref('stg_objects_constituents') }} 
+    group by 1
+)
+
 select 
 obj.objectid,
 obj.title,
@@ -13,17 +23,10 @@ obj.endyear,
 obj.inscription,
 obj.markings,
 obj.classification,
-obj_c.role,
-obj_c.roletype,
-obj_c.country,
-c.forwarddisplayname,
-c.preferreddisplayname,
-c.lastname,
-c.artistofanobjectdesc,
-c.nationality,
-c.constituenttype
+obj_c.donor_count,
+obj_c.artist_count,
+obj_c.owner_count,
+obj_c.total_count
 from {{ ref('stg_objects') }} obj
-left join {{ ref('stg_objects_constituents') }} as obj_c
+left join obj_constituents as obj_c
 on obj.objectid = obj_c.objectid
-left join {{ ref('stg_constituents') }} as c
-on obj_c.constituentid = c.constituentid
