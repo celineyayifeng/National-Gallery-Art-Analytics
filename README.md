@@ -145,7 +145,7 @@ Graphs and visuals are created to explore high-level information regarding the c
 
 Looker Studio: https://lookerstudio.google.com/reporting/a97044e0-e790-4711-b2da-4d8a70a43b0a 
 
-<img width="1050" alt="image" src="https://github.com/user-attachments/assets/e0c5ba40-fa87-47b8-b04b-0644929ab18f" />
+<img width="637" alt="image" src="https://github.com/user-attachments/assets/166ff13b-7da5-46e3-8dc6-6894f47db83b" />
 
 
 
