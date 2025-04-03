@@ -34,12 +34,93 @@ Dashboard: Looker Studio
 
 ### ELT Process 
 
+#### Initial setup: 
+
+Clone this repo to your local machine with one of the following commands:
+
+With HTTPS:
+
+`git clone https://github.com/celineyayifeng/National-Gallery-Art-Analytics.git`
+
+With ssh:
+
+`git clone git@github.com:celineyayifeng/National-Gallery-Art-Analytics.git`
+
+If not done already, generate a corresponding ssh credentials file and store it as json file named my-creds.json in the cloned repo under /keys/: <repo-directory>/keys/my-creds.json
+
+Create a file named .env in the cloned repo and add GCP bucket configuration:
+
+`.env`:
+
+```GCP_PROJECT_ID=<your_project_id>
+GCP_ACCOUNT_ID=<your_account_id>```
+
+#### Terraform 
+
+Initialize Terraform with the following command:
+`terraform init`
+Preview the changes with the following command:
+`terraform plan`
+Kick-start your project (execute the proposed plan) with the following command:
+`terraform apply`
+
+Inspect the VM instance created.
+
+#### Kestra
+
+cd into kestra directory in terminal:
+
+`cd ../kestra/`
+
+The docker image is already created. Initialize docker container to run kestra on port 8080:
+
+`docker-compose up`
+
+Once it's completed running,
+
+`curl http://locahost:8080/`
+
+Kestra UI should show up in default browser.
+
+Make sure namespace is in national-gallery-art-analytics. Go to KV Store.
+
+`key: GCP_CREDS`
+`Type: JSON`
+`Value: ` This should be the secret value of your GCP credentials.
+
+Once above is completed. Execute the following workflows in this order:
+
+gcp_kv
+gcp_setup
+
+Once the above have successfully executed, execute the following to export the data into GCP bucket:
+extract_identifier: can get objects, constituents, locations csv files
+extract_objects_categorization: can get csv files with objects attributes
+extract_constituents_categorization: can get csv files with constituents attributes
+
+Check GCP bucket to see whether the csv files are generated after execution.
+
+#### Create external tables using Bigquery
+
+Use the files in the bigquery_ext_tables to create the external tables.
+
+#### DBT
+
+Set up DBT. Connect to Bigquery. Once cloud IDE starts up, run
+
+`dbt build`
+
+This will build all the staging and fact tables in Bigquery. 
+
 ### Dashboard
+
+Go to Looker Studio and select the project and datasets you are working with. 
+
+Graphs and visuals are created to explore high-level information regarding the classifications and donors of the artwork collection as well as the number of artworks owned by NGA overtime. You can explore more with the different datasets. 
 
 Looker Studio: https://lookerstudio.google.com/reporting/a97044e0-e790-4711-b2da-4d8a70a43b0a 
 
 <img width="1050" alt="image" src="https://github.com/user-attachments/assets/e0c5ba40-fa87-47b8-b04b-0644929ab18f" />
- 
 
 
 
