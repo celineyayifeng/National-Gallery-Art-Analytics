@@ -32,7 +32,7 @@ Dashboard: Looker Studio
 
 ### Architecture 
 
-<img width="722" alt="image" src="https://github.com/user-attachments/assets/abed3fe6-6c28-4807-ac37-0506ff52be62" />
+<img width="1246" alt="image" src="https://github.com/user-attachments/assets/953af332-4c8b-404b-aa40-c1aea9ce84be" />
 
 
 ### ELT Process 
