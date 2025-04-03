@@ -114,11 +114,15 @@ Make sure namespace is in national-gallery-art-analytics. Go to KV Store.
 Once above is completed. Execute the following workflows in this order:
 
 gcp_kv
+
 gcp_setup
 
 Once the above have successfully executed, execute the following to export the data into GCP bucket:
+
 extract_identifier: can get objects, constituents, locations csv files
+
 extract_objects_categorization: can get csv files with objects attributes
+
 extract_constituents_categorization: can get csv files with constituents attributes
 
 Check GCP bucket to see whether the csv files are generated after execution.
