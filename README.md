@@ -12,7 +12,7 @@ This is an exploratory exercise to understand more about the artworks curated by
 
 ### Objective
 
-Data will be extracted from the source, and an end-to-end data pipeline will be constructed, which includes using cloud resources and workflow orchestration tool to ingest and store the data, creating a data warehouse for data processing and transformation, and building an interactive dashboard for visualzation.
+Data will be extracted from the source, and an end-to-end data pipeline will be constructed, which includes using cloud resources and workflow orchestration tool to ingest and store the data, creating a data warehouse for data processing and transformation, and building an interactive dashboard for visualization.
 
 ## Data Pipeline 
 
