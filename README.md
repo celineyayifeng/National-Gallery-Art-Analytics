@@ -52,8 +52,10 @@ Create a file named .env in the cloned repo and add GCP bucket configuration:
 
 `.env`:
 
-```GCP_PROJECT_ID=<your_project_id>
-GCP_ACCOUNT_ID=<your_account_id>```
+```
+GCP_PROJECT_ID=<your_project_id>
+GCP_ACCOUNT_ID=<your_account_id>
+```
 
 #### Terraform 
 
