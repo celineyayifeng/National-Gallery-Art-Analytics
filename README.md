@@ -53,18 +53,11 @@ With ssh:
 git clone git@github.com:celineyayifeng/National-Gallery-Art-Analytics.git
 ```
 
-If not done already, generate a corresponding ssh credentials file and store it as json file named my-creds.json in the cloned repo under /keys/: <repo-directory>/keys/my-creds.json
-
-Create a file named .env in the cloned repo and add GCP bucket configuration:
-
-`.env`:
-
-```
-GCP_PROJECT_ID=<your_project_id>
-GCP_ACCOUNT_ID=<your_account_id>
-```
+If not done already, generate a corresponding ssh credentials file and store it as json file named `google-cred.json` in the cloned repo under `./keys/google-cred.json`
 
 #### Terraform 
+
+Make sure to change `default` in the project variable in `variables.tf` with your project id. 
 
 Initialize Terraform with the following command:
 ```
@@ -113,23 +106,25 @@ Make sure namespace is in national-gallery-art-analytics. Go to KV Store.
 
 Once above is completed. Execute the following workflows in this order:
 
-gcp_kv
+- gcp_kv
 
-gcp_setup
+- gcp_setup
 
-Once the above have successfully executed, execute the following to export the data into GCP bucket:
+Once the above have successfully executed, the gcp storage bucket and bigquery dataset should be created.
 
-extract_identifier: can get objects, constituents, locations csv files
+Execute the following to export the data into GCP bucket:
 
-extract_objects_categorization: can get csv files with objects attributes
+- extract_identifier: can get objects, constituents, locations csv files
 
-extract_constituents_categorization: can get csv files with constituents attributes
+- extract_objects_categorization: can get csv files with objects attributes
+
+- extract_constituents_categorization: can get csv files with constituents attributes
 
 Check GCP bucket to see whether the csv files are generated after execution.
 
 #### Create external tables using Bigquery
 
-Use the files in the bigquery_ext_tables to create the external tables.
+Copy and paste the sql commands in the files in the bigquery_ext_tables folder to create the external tables in Bigquery. 
 
 #### DBT
 
