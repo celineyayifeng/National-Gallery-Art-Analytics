@@ -4,7 +4,7 @@ Note: This project was developed as the final step for the completion of the Dat
 
 ### Overview 
 
-The goal of this project is to build an end-to-end batch data pipeline to perform ELT (Extract Load Transform) on data records relating to the 130,000+ artworks in the collection from the National Gallery of Art. 
+The goal of this project is to build an end-to-end data pipeline to perform ELT (Extract Load Transform) on data records relating to the 130,000+ artworks in the collection from the National Gallery of Art. 
 
 ### Problem statement
 
