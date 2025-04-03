@@ -36,14 +36,9 @@ Dashboard: Looker Studio
 
 ### Dashboard
 
-You can use any of the tools shown in the course (Data Studio or Metabase) or any other BI tool of your choice to build a dashboard. If you do use another tool, please specify and make sure that the dashboard is somehow accessible to your peers. 
+Looker Studio: https://lookerstudio.google.com/reporting/a97044e0-e790-4711-b2da-4d8a70a43b0a 
 
-Your dashboard should contain at least two tiles, we suggest you include:
-
-- 1 graph that shows the distribution of some categorical data 
-- 1 graph that shows the distribution of the data across a temporal line
-
-Ensure that your graph is easy to understand by adding references and titles.
+<img width="1050" alt="image" src="https://github.com/user-attachments/assets/e0c5ba40-fa87-47b8-b04b-0644929ab18f" />
  
 
 
