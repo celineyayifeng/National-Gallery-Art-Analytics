@@ -40,11 +40,15 @@ Clone this repo to your local machine with one of the following commands:
 
 With HTTPS:
 
-`git clone https://github.com/celineyayifeng/National-Gallery-Art-Analytics.git`
+`
+git clone https://github.com/celineyayifeng/National-Gallery-Art-Analytics.git
+`
 
 With ssh:
 
-`git clone git@github.com:celineyayifeng/National-Gallery-Art-Analytics.git`
+`
+git clone git@github.com:celineyayifeng/National-Gallery-Art-Analytics.git
+`
 
 If not done already, generate a corresponding ssh credentials file and store it as json file named my-creds.json in the cloned repo under /keys/: <repo-directory>/keys/my-creds.json
 
@@ -60,11 +64,17 @@ GCP_ACCOUNT_ID=<your_account_id>
 #### Terraform 
 
 Initialize Terraform with the following command:
-`terraform init`
+`
+terraform init
+`
 Preview the changes with the following command:
-`terraform plan`
+`
+terraform plan
+`
 Kick-start your project (execute the proposed plan) with the following command:
-`terraform apply`
+`
+terraform apply
+`
 
 Inspect the VM instance created.
 
@@ -72,7 +82,9 @@ Inspect the VM instance created.
 
 cd into kestra directory in terminal:
 
-`cd ../kestra/`
+`
+cd ../kestra/
+`
 
 The docker image is already created. Initialize docker container to run kestra on port 8080:
 
